@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "Update";
+}
+
+<h2>Update Movies</h2>
+<div>
+   
+    <form method="post" class="form-group" id="UpdateMovie">
+        <span class="form-inline">
+            Movie ID :
+            <input type="number" name="MovieID" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Movie Name :
+            <input type="text" name="MovieName" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Year of Movie :
+            <input type="number" name="MovieYear" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Movie Type :
+            <input type="text" name="MovieType" class="form-control" />
+        </span>
+        <label>
+        </label>
+        <br />
+    </form>
+    <input type="submit" value="Update" class="btn btn-primary" data-attr="Update_Movie" />
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/UpdateMovie.js"></script>
+
+

@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete Movie</h2>
+
+<div>
+    <form method="post" class="form-group" id="DeleteMovie">
+        <span class="form-inline">
+            Delete a movie by its id :
+            <input type="number" name="MovieID" class="form-control" />
+        </span>
+        <label>
+        </label>
+        <br />
+    </form>
+    <input type="submit" value="Delete" class="btn btn-primary" data-attr="Delete_Movie" />
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/deleteMovie.js"></script>
+

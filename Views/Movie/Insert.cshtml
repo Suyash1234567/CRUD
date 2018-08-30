@@ -1,0 +1,59 @@
+﻿@model MovieViewModel
+@{
+    ViewData["Title"] = "Insert";
+}
+
+<div>
+    <h1>Add Movie </h1>
+    <form method="post" class="form-group" id="AddMovie">
+        <span class="form-inline">
+            Movie ID :
+            <input type="number" name="MovieID" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Movie Name :
+            <input type="text" name="MovieName" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Year of Movie :
+            <input type="number" name="ReleaseYear" class="form-control" />
+        </span>
+        <br />
+        <br />
+        <span class="form-inline">
+            Movie Type :
+            <input type="text" name="Genre" class="form-control" />
+        </span>
+        <label>
+        </label>
+        <br />
+    </form>
+    <input type="submit" value="Add" class="btn btn-primary" data-attr="Add_Movie" />
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('[data-attr="Add_Movie"]').on('click', function () {
+        $.ajax(
+            {
+                url: "/Movie/Insert",
+                type: "POST",
+                data: $('#AddMovie').serialize(),
+                success: function (response) {
+                    console.log(response)
+                    window.location.href = 'http://localhost:50448/'
+
+
+                },
+                Error: function (err) {
+                    // console.log(err)
+                }
+            });
+    });
+</script>
+
+<script src="~/js/insertMovie.js"></script>
+

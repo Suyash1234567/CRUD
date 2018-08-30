@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@model List<Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+
+<table class="table table-bordered" >
+    <thead>
+    </thead>
+    <tbody id="trData">
+        @foreach (var movieDetail in Model)
+        {
+            <tr >
+                <th scope="row">@movieDetail.MovieID</th>
+                <td>@movieDetail.MovieName</td>
+                <td>@movieDetail.ReleaseYear</td>
+                <td>@movieDetail.Genre</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+

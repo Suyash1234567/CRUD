@@ -1,0 +1,72 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model MovieViewModel
+<h1>Movie Details</h1>
+<Partial name="_PartialView" , model="Model.MovieList" />
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="//code.jquery.com/jquery-1.12.4.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- add thids links for the error message-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/1.3.1/css/toastr.css" />
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/1.3.1/js/toastr.js"></script>
+
+
+
+
+
+<div>
+    <form method="post" class="form-group" id="MovieSearch">
+        <span class="form-inline">
+            Search a movie by its id :
+            <input type="number" asp-for="@Model.MovieID" class="form-control" />
+        </span>
+        <label>
+        </label>
+        <br />
+
+    </form>
+    <input type="submit" value="submit" class="btn btn-primary" data-attr="submit" />
+</div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $('[data-attr="submit"]').on('click', function () {
+        $.ajax(
+            {
+                url: "/Movie/Index",
+                type: "POST",
+                data: $('#MovieSearch').serialize(),
+
+                success: function (response) {
+                    var tr="";
+                    var res = JSON.stringify(response);
+                    var myMovie = JSON.parse(res)["movieList"][0];
+                    console.log(res);
+                    //console.log(JSON.parse(res)["movieList"][0].movieName)
+                    if (myMovie === undefined) { alert("Id does not exist"); }
+                    else {
+                        tr = tr + "<tr>";
+                        tr = tr + "<td>" + myMovie.movieID + "</td>";
+                        tr = tr + "<td>" + myMovie.movieName + "</td>";
+                        tr = tr + "<td>" + myMovie.releaseYear + "</td>";
+                        tr = tr + "<td>" + myMovie.genre + "</td>";
+                        tr = tr + "</tr>";
+                        $('#trData').html(tr);
+                    }
+                    //tblFormate();
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+    });
+
+
+</script>
